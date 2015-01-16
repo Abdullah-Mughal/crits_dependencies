@@ -52,12 +52,12 @@ then
   if [ "$VER" == '10.04' ]
   then
     echo "Installing importlib 1.0.2..."
-    cd importlib-1.0.2 && sudo ${PYBIN} setup.py install && cd ..
+    sudo ${PYBIN} importlib-1.0.2/setup.py install
     echo "Installing ordereddict 1.1..."
-    cd ordereddict-1.1 && sudo ${PYBIN} setup.py install && cd ..
+    sudo ${PYBIN} ordereddict-1.1/setup.py install
   fi
   echo "Installing python-dateutil 2.2..."
-  cd python-dateutil-2.2 && sudo ${PYBIN} setup.py install && cd ..
+  sudo ${PYBIN} python-dateutil-2.2/setup.py install
   echo "Installing UPX"
   sudo apt-get -y install upx
   echo "Installing M2Crypto"
@@ -83,10 +83,10 @@ then
   echo "Installing Python requirements..."
   sudo yum install python-pycurl python-dateutil python-devel python-setuptools
   sudo yum install numpy matplotlib
-  cd pydot-1.0.28 && sudo ${PYBIN} setup.py install && cd ..
-  cd pyparsing-1.5.6 && sudo ${PYBIN} setup.py install && cd ..
+  sudo ${PYBIN} pydot-1.0.28/setup.py install
+  sudo ${PYBIN} pyparsing-1.5.6/setup.py install
   sudo rpm -i libyaml-0.1.4-1.el6.rf.x86_64.rpm
-  cd PyYAML-3.10 && sudo ${PYBIN} setup.py install && cd ..
+  sudo ${PYBIN} PyYAML-3.10/setup.py install
   echo "Installing UPX"
   sudo rpm -i upx-3.07-1.el6.rf.x86_64.rpm
 elif [ "$OS" == 'darwin']
@@ -100,20 +100,20 @@ fi
 echo "Installing MongoDB 2.6.4..."
 sudo cp mongodb-linux-x86_64-2.6.4/bin/* /usr/local/bin/
 echo "Installing PyMongo 2.7.2..."
-cd pymongo-2.7.2 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} pymongo-2.7.2/setup.py install
 echo "Installing DefusedXML 0.4.1..."
-cd defusedxml-0.4.1 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} defusedxml-0.4.1/setup.py install
 echo "Installing Django 1.6.5..."
-cd Django-1.6.5 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} Django-1.6.5/setup.py install
 echo "Installing Django Tastypie 0.11.0..."
-cd django-tastypie-0.11.0 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} django-tastypie-0.11.0/setup.py install
 echo "Installing Django Tastypie Mongoengine 0.4.5..."
-cd django-tastypie-mongoengine-0.4.5 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} django-tastypie-mongoengine-0.4.5/setup.py install
 echo "Installing MongoEngine 0.8.7..."
-cd mongoengine-0.8.7 && sudo ${PYBIN} setup.py install && cd ..
+sudo ${PYBIN} mongoengine-0.8.7/setup.py install
 echo "Installing ssdeep..."
-cd ssdeep-2.11 && sudo ./configure && sudo make && sudo make install && cd ..
-cd pydeep-0.2 && sudo ${PYBIN} setup.py install && cd ..
+sudo ssdeep-2.11/configure && sudo ssdeep-2.11/make && sudo ssdeep-2.11/make install # Not sure about this line
+sudo ${PYBIN} pydeep-0.2/setup.py install
 if [ -f /usr/local/lib/libfuzzy.so.2.0.0 ];
 then
     sudo echo '/usr/local/lib' > /etc/ld.so.conf.d/libfuzzy-x86_64.conf
@@ -124,12 +124,12 @@ echo "Installing Python magic..."
 sudo ${PYBIN} python-magic/setup.py install
 echo "Installing dependencies for Services Framework..."
 sudo ${PYBIN} anyjson-0.3.3/setup.py install
-sudo ${PYBIN} amqp-1.0.6 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} billiard-2.7.3.19 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} kombu-2.5.4 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} celery-3.0.12 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} django-celery-3.0.11 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} requests-v1.1.0-9 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} cybox-2.1.0.5 && sudo ${PYBIN} setup.py install
-sudo ${PYBIN} stix-1.1.1.0 && sudo ${PYBIN} setup.py install
+sudo ${PYBIN} amqp-1.0.6/setup.py install
+sudo ${PYBIN} billiard-2.7.3.19/setup.py install
+sudo ${PYBIN} kombu-2.5.4/setup.py install
+sudo ${PYBIN} celery-3.0.12/setup.py install
+sudo ${PYBIN} django-celery-3.0.11/setup.py install
+sudo ${PYBIN} requests-v1.1.0-9/setup.py install
+sudo ${PYBIN} cybox-2.1.0.5/setup.py install
+sudo ${PYBIN} stix-1.1.1.0/setup.py install
 echo "Dependency installations complete!"
