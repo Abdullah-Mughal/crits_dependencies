@@ -89,6 +89,8 @@ then
   cd PyYAML-3.10 && sudo ${PYBIN} setup.py install && cd ..
   echo "Installing UPX"
   sudo rpm -i upx-3.07-1.el6.rf.x86_64.rpm
+elif [ "$OS" == 'darwin']
+  echo "OSX is not supported yet. See https://github.com/crits/crits/blob/master/documentation/crits_on_osx.txt for instructions."
 else
   echo "Unknown distro!"
   echo -e "Detected: $OS $VER"
