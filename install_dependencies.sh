@@ -51,9 +51,6 @@ then
   sudo rpm -i ./rpms/libyaml-0.1.4-1.el6.rf.x86_64.rpm
   sudo rpm -i ./rpms/upx-3.07-1.el6.rf.x86_64.rpm
 
-  echo "Automatically installing specific Python packages"
-  sudo ${PYBIN} pydot-1.0.28/setup.py install
-  sudo ${PYBIN} pyparsing-1.5.6/setup.py install
 elif [ "$OS" == 'darwin']
 then
   echo "OSX is not supported yet. See https://github.com/crits/crits/blob/master/documentation/crits_on_osx.txt for instructions."
