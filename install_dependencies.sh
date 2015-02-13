@@ -40,32 +40,24 @@ then
 # elif [ "$OS" == 'centos' ] || [ "$OS" == 'redhat' ]
 elif [ "$OS" == 'red hat' ]
 then
-  echo "Installing Apache and mod-wsgi..."
-  sudo yum install httpd mod_wsgi mod_ssl
-  echo "Installing Build-Essential..."
-  sudo yum install make gcc gcc-c++ kernel-devel
-  echo "Installing PCRE-dev..."
-  sudo yum install pcre pcre-devel
-  echo "Installing cURL..."
-  sudo yum install curl
-  echo "Installing zip, 7zip, and unrar..."
+  echo "Installing Yum Packages"
+  sudo yum install
+  sudo yum install httpd mod_wsgi mod_ssl make gcc gcc-c++ kernel-devel pcre pcre-devel curl libpcap-devel python-pycurl python-dateutil python-devel python-setuptools
+
+  echo "Automatically installing manual packages"
   sudo yum install zip unzip gzip bzip2
   sudo rpm -i ./rpms/p7zip-9.20.1-2.el6.rf.x86_64.rpm
   sudo rpm -i ./rpms/unrar-4.2.3-1.el6.rf.x86_64.rpm
-  echo "Installing libpcap-devel..."
-  sudo yum install libpcap-devel
-  echo "Installing Python requirements..."
-  sudo yum install python-pycurl python-dateutil python-devel python-setuptools
-  sudo yum install numpy matplotlib
+  sudo rpm -i ./rpms/libyaml-0.1.4-1.el6.rf.x86_64.rpm
+  sudo rpm -i ./rpms/upx-3.07-1.el6.rf.x86_64.rpm
+
+  echo "Automatically installing specific Python packages"
   sudo ${PYBIN} pydot-1.0.28/setup.py install
   sudo ${PYBIN} pyparsing-1.5.6/setup.py install
-  sudo rpm -i ./rpms/libyaml-0.1.4-1.el6.rf.x86_64.rpm
-  sudo ${PYBIN} PyYAML-3.10/setup.py install
-  echo "Installing UPX"
-  sudo rpm -i ./rpms/upx-3.07-1.el6.rf.x86_64.rpm
 elif [ "$OS" == 'darwin']
 then
   echo "OSX is not supported yet. See https://github.com/crits/crits/blob/master/documentation/crits_on_osx.txt for instructions."
+  # brew install ssdeep
 else
   echo "Unknown distro!"
   echo -e "Detected: $OS $VER"
@@ -86,14 +78,3 @@ git clone https://github.com/crits/crits.git
 echo "Setting Up MongoDB"
 sudo mkdir -p /data/db
 sudo ./crits/contrib/mongo/NUMA/mongod_start.sh
-
-
-crits/crits/config/database_example.py crits/crits/config/database.py
-crits/crits/config/database_example.py: line 7: MONGO_HOST: command not found
-crits/crits/config/database_example.py: line 8: MONGO_PORT: command not found
-crits/crits/config/database_example.py: line 9: MONGO_DATABASE: command not found
-crits/crits/config/database_example.py: line 13: MONGO_SSL: command not found
-crits/crits/config/database_example.py: line 14: MONGO_USER: command not found
-crits/crits/config/database_example.py: line 15: MONGO_PASSWORD: command not found
-crits/crits/config/database_example.py: line 23: SECRET_KEY: command not found
-crits/crits/config/database_example.py: line 26: FILE_DB: command not found
