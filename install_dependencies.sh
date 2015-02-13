@@ -34,14 +34,15 @@ VER="$(tr "[:upper:]" "[:lower:]" <<< "$VER")"
 if [ "$OS" == 'ubuntu' ]
 then
   echo "Installing dependencies with apt-get"
-  apt-get install -y apache2 build-essential curl emacs git libapache2-mod-wsgi libevent-dev libfuzzy-dev libldap2-dev libpcap-dev libpcre3-dev libsasl2-dev libxml2-dev libxslt1-dev libyaml-dev m2crypto mongodb numactl p7zip-full python-dev python-lxml python-m2crypto python-matplotlib python-numpy python-pip python-pycurl python-pydot python-pyparsing python-setuptools python-yaml ssdeep upx zip
+  apt-get update
+  apt-get install -y --fix-missing apache2 build-essential curl emacs git libapache2-mod-wsgi libevent-dev libfuzzy-dev libldap2-dev libpcap-dev libpcre3-dev libsasl2-dev libxml2-dev libxslt1-dev libyaml-dev m2crypto mongodb numactl p7zip-full python-dev python-lxml python-m2crypto python-matplotlib python-numpy python-pip python-pycurl python-pydot python-pyparsing python-setuptools python-yaml ssdeep upx zip
 
 # TODO: Need to test centos dependencies
 # elif [ "$OS" == 'centos' ] || [ "$OS" == 'redhat' ]
 elif [ "$OS" == 'red hat' ]
 then
   echo "Installing Yum Packages"
-  sudo yum install
+  # Probably should run the Yum equivelent of apt-get update
   sudo yum install httpd mod_wsgi mod_ssl make gcc gcc-c++ kernel-devel pcre pcre-devel curl libpcap-devel python-pycurl python-dateutil python-devel python-setuptools
 
   echo "Automatically installing manual packages"
@@ -62,7 +63,7 @@ else
 fi
 
 echo "Installing MongoDB 2.6.4..."
-sudo cp mongodb-linux-x86_64-2.6.4/bin/* /usr/local/bin/
+sudo cp ./mongodb-linux-x86_64-2.6.4/bin/* /usr/local/bin/
 
 echo "Installing Python Dependencies"
 sudo pip install -r requirements.txt
