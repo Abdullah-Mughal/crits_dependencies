@@ -68,11 +68,11 @@ sudo cp ./mongodb-linux-x86_64-2.6.4/bin/* /usr/local/bin/
 echo "Installing Python Dependencies"
 sudo pip install -r requirements.txt
 
-echo "Dependency installations complete!"
-
 echo "Downloading CRITs"
 git clone https://github.com/crits/crits.git
 
 echo "Setting Up MongoDB"
 sudo mkdir -p /data/db
 sudo ./crits/contrib/mongo/NUMA/mongod_start.sh
+
+echo "Dependency installations complete!"
