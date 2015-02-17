@@ -1,11 +1,17 @@
-CRITs Dependencies
-==================
+Dependencies for CRITs 3.1.0
+============================
+
+## NOTE:
+This repo is only kept here for the existing 3.1.0 release. It is no longer
+needed if you are setting up a new install by tracking a branch and will be
+going away once the next version of CRITs is released. The core project now
+comes with a bootstrap script which handles dependency installation.
 
 This repository contains some of the dependencies for CRITs.
 
 ## Installing this software
 
-Once you have downloaded or cloned the repository, you will want to run the
+Once you have downloaded the repository, you will want to run the
 install_dependencies.sh script which comes with it.
 
 `sudo -E ./install_dependencies.sh`
