@@ -47,10 +47,10 @@ then
 
   echo "Automatically installing manual packages"
   sudo yum install zip unzip gzip bzip2
-  sudo rpm -i ./rpms/p7zip-9.20.1-2.el6.rf.x86_64.rpm
-  sudo rpm -i ./rpms/unrar-4.2.3-1.el6.rf.x86_64.rpm
-  sudo rpm -i ./rpms/libyaml-0.1.4-1.el6.rf.x86_64.rpm
-  sudo rpm -i ./rpms/upx-3.07-1.el6.rf.x86_64.rpm
+  sudo yum install p7zip-9.20.1-2
+  sudo yum install unrar-4.2.3-1
+  sudo yum install libyaml-0.1.4-1
+  sudo yum install upx-3.07-1
 
 elif [ "$OS" == 'darwin']
 then
@@ -63,16 +63,11 @@ else
 fi
 
 echo "Installing MongoDB 2.6.4..."
+curl http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz > mongodb-linux-x86_64-2.6.4.tgz
+tar -zxvf mongodb-linux-x86_64-2.6.4.tgz
 sudo cp ./mongodb-linux-x86_64-2.6.4/bin/* /usr/local/bin/
 
 echo "Installing Python Dependencies"
 sudo pip install -r requirements.txt
-
-echo "Downloading CRITs"
-git clone https://github.com/crits/crits.git
-
-echo "Setting Up MongoDB"
-sudo mkdir -p /data/db
-sudo ./crits/contrib/mongo/NUMA/mongod_start.sh
 
 echo "Dependency installations complete!"
