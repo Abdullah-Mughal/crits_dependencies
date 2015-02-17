@@ -1,7 +1,0 @@
-pydeep requires Python >= 2.5
-Make sure you have libssdeep installed from http://ssdeep.sourceforge.net
-
-pydeep install
---------------
-python setup.py build
-sudo python setup.py install
